@@ -1,0 +1,227 @@
+/* ======================================================
+   🎨 CollabCanvas – Premium UI
+   ====================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+body {
+  height: 100vh;
+  overflow: hidden;
+  background: linear-gradient(135deg, #141e30, #243b55);
+  color: #fff;
+  transition: background 0.5s ease;
+}
+
+.app-container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  position: relative;
+}
+
+/* ---------- Loader ---------- */
+#loader {
+  position: fixed;
+  inset: 0;
+  background: radial-gradient(circle, #1a1a1a, #0d0d0d);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+  color: #90caf9;
+  font-weight: 500;
+  font-size: 1.1rem;
+  animation: fadeOut 1s ease 1.5s forwards;
+}
+@keyframes fadeOut {
+  to { opacity: 0; visibility: hidden; }
+}
+.loader-spinner {
+  width: 40px;
+  height: 40px;
+  border: 4px solid #555;
+  border-top-color: #90caf9;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin-bottom: 15px;
+}
+@keyframes spin { 100% { transform: rotate(360deg); } }
+
+/* ---------- Glass Toolbar ---------- */
+.toolbar.glass {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+  padding: 0.7rem 1.5rem;
+  z-index: 10;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  font-size: 1.2rem;
+  color: #90caf9;
+  font-weight: 600;
+}
+.logo i {
+  margin-right: 10px;
+  font-size: 1.4rem;
+  color: #90caf9;
+}
+
+/* ---------- Tools ---------- */
+.tools {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.tool-btn {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
+  color: #fff;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  padding: 0.5rem 0.7rem;
+}
+.tool-btn:hover {
+  background: rgba(255, 255, 255, 0.18);
+  transform: scale(1.1);
+}
+.tool-btn.active {
+  color: #90caf9;
+  border-color: #90caf9;
+  box-shadow: 0 0 8px #90caf9;
+}
+
+.divider {
+  width: 1px;
+  height: 24px;
+  background: rgba(255, 255, 255, 0.2);
+}
+
+/* ---------- Inputs ---------- */
+input[type="color"] {
+  width: 38px;
+  height: 38px;
+  border: none;
+  border-radius: 50%;
+  background: none;
+  cursor: pointer;
+  overflow: hidden;
+}
+
+input[type="range"] {
+  width: 90px;
+  accent-color: #90caf9;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+/* ---------- Brush Preview ---------- */
+.brush-preview {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  border: 2px solid #fff;
+  background: #90caf9;
+  transition: all 0.2s ease;
+}
+
+/* ---------- Info ---------- */
+.info {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+#darkMode {
+  background: none;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  font-size: 1.1rem;
+}
+
+.avatars {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+.avatars div {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  border: 2px solid #fff;
+  background: #90caf9;
+}
+
+/* ---------- Canvas ---------- */
+.canvas-container {
+  flex: 1;
+  position: relative;
+  overflow: hidden;
+}
+
+canvas#board {
+  width: 100%;
+  height: 100%;
+  display: block;
+  background: #111;
+  cursor: crosshair;
+  transition: background 0.5s ease;
+}
+
+/* ---------- Cursor Indicators ---------- */
+#cursors {
+  position: absolute;
+  inset: 0;
+}
+
+.cursor {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  padding: 6px;
+  border-radius: 50%;
+  color: #fff;
+  font-size: 12px;
+  font-weight: bold;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.3);
+  pointer-events: none;
+  animation: pulse 1.4s infinite;
+}
+@keyframes pulse {
+  0% { transform: translate(-50%, -50%) scale(1); opacity: 1; }
+  100% { transform: translate(-50%, -50%) scale(1.4); opacity: 0; }
+}
+
+/* ---------- Dark Mode ---------- */
+body.light {
+  background: linear-gradient(135deg, #e3f2fd, #f9fbe7);
+  color: #333;
+}
+body.light .toolbar.glass {
+  background: rgba(255, 255, 255, 0.7);
+  border-color: #ddd;
+}
+body.light canvas#board {
+  background: #fafafa;
+}
+body.light .tool-btn.active {
+  color: #1976d2;
+  border-color: #1976d2;
+  box-shadow: 0 0 6px #1976d2;
+}

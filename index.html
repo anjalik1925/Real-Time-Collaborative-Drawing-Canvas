@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CollabCanvas – Real-Time Artboard</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://kit.fontawesome.com/a2d04e18fd.js" crossorigin="anonymous"></script>
+</head>
+<body>
+  <!-- Loader Screen -->
+  <div id="loader">
+    <div class="loader-spinner"></div>
+    <h2>Launching CollabCanvas...</h2>
+  </div>
+
+  <div class="app-container">
+    <!-- Toolbar -->
+    <header class="toolbar glass">
+      <div class="logo">
+        <i class="fa-solid fa-pen-nib"></i>
+        <span>CollabCanvas</span>
+      </div>
+
+      <div class="tools">
+        <button id="brush" class="tool-btn active" title="Brush (B)">
+          <i class="fa-solid fa-paintbrush"></i>
+        </button>
+        <button id="eraser" class="tool-btn" title="Eraser (E)">
+          <i class="fa-solid fa-eraser"></i>
+        </button>
+
+        <div class="divider"></div>
+
+        <input id="color" type="color" title="Color Picker" />
+        <input id="size" type="range" min="2" max="50" value="8" title="Brush Size" />
+
+        <div class="brush-preview" id="brushPreview"></div>
+
+        <div class="divider"></div>
+
+        <button id="undo" class="tool-btn" title="Undo (Z)">
+          <i class="fa-solid fa-rotate-left"></i>
+        </button>
+        <button id="redo" class="tool-btn" title="Redo (Y)">
+          <i class="fa-solid fa-rotate-right"></i>
+        </button>
+        <button id="clear" class="tool-btn" title="Clear Canvas (C)">
+          <i class="fa-solid fa-trash"></i>
+        </button>
+      </div>
+
+      <div class="info">
+        <div class="avatars" id="userAvatars"></div>
+        <button id="darkMode" title="Toggle Theme">
+          <i class="fa-solid fa-moon"></i>
+        </button>
+      </div>
+    </header>
+
+    <!-- Canvas Area -->
+    <main class="canvas-container">
+      <div id="cursors"></div>
+      <canvas id="board"></canvas>
+    </main>
+  </div>
+
+  <!-- ✅ Must load Socket.IO client before main.js -->
+  <script src="/socket.io/socket.io.js"></script>
+  <script type="module" src="./main.js"></script>
+</body>
+</html>
